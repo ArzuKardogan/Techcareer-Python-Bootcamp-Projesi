@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if tarif %}
+<h4>{{tarif.yemek_adi}}</h4>
+<hr>
+Tarifi Yazan: {{tarif.tarifi_yazan}}
+<hr>
+Tarifin oluşturulma Tarihi: {{tarif.upload_time}}
+<hr>
+ {{tarif.tarif|safe}}
+
+{% else %}
+<div class="alert alert-warning">
+Böyle bir tarif bulunmamaktadır..
+</div>
+{% endif %}
+
+{% endblock body %}

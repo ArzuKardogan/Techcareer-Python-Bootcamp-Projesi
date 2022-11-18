@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Yemek Tarifi</h3>
+<hr>
+{% from "includes/formhelp.html" import render_field %}
+<form method=post>
+    {{ render_field(form.tarifadi ,class="form-control")}}
+    {{ render_field(form.tarif ,class="form-control") }}
+    {{ render_field(form.tarifkategorisi ,class="form-control") }}
+  <button type="submit" class="btn btn-dark">Yemek Tarifi Ekle</button>
+</form>
+{% endblock %}

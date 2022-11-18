@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h3>Kontrol Paneli</h3>
+<small>Hoşgeldin, {{session["username"]}}</small>
+<hr>
+<a href="/dashboard" class="btn btn-warning">Tarifler</a>
+<hr>
+<hr>
+<a href="/kategoriekle" class="btn btn-warning">Kategori Ekle</a>
+<hr>
+
+{% if kategoriler %}
+<h4>KATEGORİLER</h4>
+<table class="table table-danger table-striped">
+  <thead class=" table-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">KATEGORİ ADI</th>
+       <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for kategori in kategoriler %} 
+    <tr>
+      <th scope="row">{{kategori.id}}</th>
+      <td><a href="/yemektarifi/{{kategori.id}}">{{kategori.kategori_adi}}</td>
+      <td><a href="/editkategori/{{kategori.id}}" class="btn btn-light">Güncelle</a> </td>
+      <td><a href="/deletekategori/{{kategori.id}}" class="btn btn-light">Sil</a> </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="alert alert-danger"> Henüz bir yemek tarifiniz bulunmamaktadır...</div>
+{% endif %}
+
+{% endblock %}

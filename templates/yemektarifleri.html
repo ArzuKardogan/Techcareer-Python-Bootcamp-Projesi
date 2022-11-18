@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>Tarifler</h3>
+<hr>
+{% if tarifler %}
+    <form action="/search" method="post">
+        <input type="text" name="keyword" class = "input-sm" maxlenght="64" placeholder ="Ara..">
+        <button type="submit" class="btn btn-danger">Ara</button> 
+    </form>
+    <hr>
+    <ul class="list-group">
+    {% for tarif in tarifler %} 
+    <li class="list-group-item"><a href="/yemektarifi/{{tarif.id}}">{{tarif.kategori_adi}} </a></li>
+   {% endfor %}
+   </ul>
+{% else %}
+<div class="alert alert-danger"> Henüz eklenmiş bir tarif bulunmamaktadır111.</div>
+{% endif %}
+
+{% endblock body %}
